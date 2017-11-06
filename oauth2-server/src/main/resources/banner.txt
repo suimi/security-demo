@@ -1,0 +1,11 @@
+
+   ${AnsiColor.GREEN}    ██████╗  ██████╗
+   ${AnsiColor.GREEN}   ██╔════╝ ██╔═══██╗
+   ${AnsiColor.GREEN}   ██║  ███╗██║   ██║
+   ${AnsiColor.GREEN}   ██║   ██║██║   ██║
+   ${AnsiColor.GREEN}   ╚██████╔╝╚██████╔╝
+   ${AnsiColor.GREEN}    ╚═════╝  ╚═════╝
+
+  ${AnsiColor.BRIGHT_BLUE}:: Application Name: ${spring.application.name}
+  :: Application Version${application.formatted-version}
+  :: Running Spring Boot${spring-boot.formatted-version}

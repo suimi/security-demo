@@ -1,0 +1,41 @@
+spring:
+  aop:
+    proxy-target-class: true
+server:
+  port: 9002
+  session:
+    cookie:
+      # Possible CSRF detected - state parameter was required but no state could be found
+      # code重复使用，也就是不停刷新授权后的界面导致的
+      # You have 2 servers running on localhost, on different ports, but cookies don't record the host,
+      # suggestion to change the context path is to change the cookie name one of your services
+      # see issues: https://github.com/spring-projects/spring-security-oauth/issues/322
+      name: CLIENTSESSION
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      client-secret: usersecret
+      client-id: user_client
+      access-token-uri: http://localhost:9001/oauth/token
+      user-authorization-uri: http://localhost:9001/oauth/authorize
+      use-current-uri: true
+      authorities: TRUSTED_CLIENT
+    resource:
+      jwt:
+        key-uri: http://localhost:9001/oauth/token_key
+#        key-value: |
+#                           -----BEGIN PUBLIC KEY-----
+#                           MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDNQZKqTlO/+2b4ZdhqGJzGBDlt
+#                           b5PZmBz1ALN2YLvt341pH6i5mO1V9cX5Ty1LM70fKfnIoYUP4KCE33dPnC7LkUwE
+#                           /myh1zM6m8cbL5cYFPyP099thbVxzJkjHWqywvQih/qOOjliomKbM9pxG8Z1dB26
+#                           hL9dSAZuA8xExjlPmQIDAQAB
+#                           -----END PUBLIC KEY-----
+      user-info-uri: http://localhost:9001/users/user
+    sso:
+      login-path: /login
+logging:
+  level:
+    org.springframework.security: debug
+
