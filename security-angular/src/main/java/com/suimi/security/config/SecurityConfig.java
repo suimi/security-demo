@@ -1,15 +1,14 @@
 /*
  * Copyright (c) 2013-2015,  suimi
  */
-package com.suimi.security.oauth2server.security;
+package com.suimi.security.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 /**
  * @author suimi
@@ -34,20 +33,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
         http.httpBasic().disable()
-            .formLogin().loginPage("/login").permitAll().and()
+            .formLogin().loginPage("/login.html").loginProcessingUrl("/login").permitAll().and()
             // 只对Basic认证做处理，如果不配置，与资源服务在同一应用情况下，资源oauth2认证会被忽略
-            .requestMatcher(request -> {
-                String auth = request.getHeader(HttpHeaders.AUTHORIZATION);
-                return (auth != null && auth.startsWith("Basic"));
-            })
             .authorizeRequests()
-                .antMatchers("/login","/oauthLogin","/","/css/**", "/js/**", "/fonts/**","**.ico").permitAll()
-                .antMatchers("/oauth/authorize","/oauth/confirm_access").permitAll()
-                .antMatchers("/h2-console/**").hasRole("ADMIN")
-    //            .antMatchers("/users/**").access("#oauth2.hasScope('user') or hasRole('USER')")
+                .antMatchers("/login","/login.html","/css/**", "/js/**","/img/**", "/fonts/**","**.ico").permitAll()
                 .antMatchers("/admin/*").hasRole("ADMIN")
-                .anyRequest().authenticated();
-//            .and().csrf().disable();
+                .anyRequest().authenticated()
+            .and()
+                .csrf().disable();
         // @formatter:on
     }
 }

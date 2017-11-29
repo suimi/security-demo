@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body ng-app="index">
+    <div class="container">
+        <h1>User</h1>
+        <div ng-controller="home as user" ng-cloak class="ng-cloak">
+            <p>The user name is {{user.name}}</p>
+            <p>The authorities is {{user.authorities}}</p>
+        </div>
+    </div>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

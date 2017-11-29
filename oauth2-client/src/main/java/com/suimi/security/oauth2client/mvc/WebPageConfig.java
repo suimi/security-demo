@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2015, 成都中联信通科技股份有限公司
+ * Copyright (c) 2013-2015,  suimi
  */
 package com.suimi.security.oauth2client.mvc;
 

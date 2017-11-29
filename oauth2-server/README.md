@@ -1,20 +1,23 @@
-####请求授权
-#####授权地址，获取code
-`
+请求授权
+====
+### 授权地址，获取code
+```
 http://localhost:9001/oauth/authorize?response_type=code&scope=pwd&client_id=acme&state=09876999
-`
-#####登录
-#####回调并返回code
-`http://localhost:9001/?code=eVeJ6G&state=09876999
-`
-####ACCESS TOKEN
-#####获取access_token
-!(secreenshots/token.png)
+```
+### 登录
+#### 回调并返回code
+```
+http://localhost:9001/?code=eVeJ6G&state=09876999
+```
+### ACCESS TOKEN
+#### 获取access_token
+![access token](secreenshots/token.png)
 
-#####返回access_token
+#### 返回access_token
+```
 {"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDg5NDMwNTgsInVzZXJfbmFtZSI6InVzZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiN2RiNTIxNGUtZjcwYS00ODI3LTllYmItNTE1Njc2NWRmN2M1IiwiY2xpZW50X2lkIjoiYWNtZSIsInNjb3BlIjpbInB3ZCJdfQ.RjMqeQHu1CGbMRb8Ca1nMpzL0Pp4FPibShfHJZ3mXcSeRqXvA1nxw89W_RufmcZrWR3EXeQZvqXFynZAPOTRRR4upJvag3kat0AlA6EHG0wNFaBWYZdILI-3LO4-1bK4s_2vjEHTPPBvuKHJ1UWG0pg3cagW3nBxbkPwQcqdvsY","token_type":"bearer","refresh_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJ1c2VyIiwic2NvcGUiOlsicHdkIl0sImF0aSI6IjdkYjUyMTRlLWY3MGEtNDgyNy05ZWJiLTUxNTY3NjVkZjdjNSIsImV4cCI6MTUxMTQ5MTg1OCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjVlMjFmZDYwLWU4MTktNDViNy1hZGYyLWU0MmZjYTA1MzA1NyIsImNsaWVudF9pZCI6ImFjbWUifQ.oMzrMte-S5-D1ZOqn9FxcfcMTQOKefXo7iEM1Y2BsI19v3eQmg9X4vEZRCottJcS6csWMY2A9Ao4gsXE3XSAt2XqiaNogFoyAXzpLNLPQrIngRw9W9NR7ninWMeRVAHxPuylhU1oC8AiHKguMartsCGysLCBMSWViKpG5nFRtOs","expires_in":43199,"scope":"pwd","jti":"7db5214e-f70a-4827-9ebb-5156765df7c5"}
-
-#####access_token获取资源
-`
+```
+#### access_token获取资源
+```
 curl http://localhost:9001/password -H "Authorization: bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDg5NjA0MTIsInVzZXJfbmFtZSI6InVzZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiOGM1MGRlNmUtODZkNS00MDMwLWJlOWUtMmNiNjE1NzdkNGFiIiwiY2xpZW50X2lkIjoiYWNtZSIsInNjb3BlIjpbInB3ZCJdfQ.xg9igTZ-O5a5WD-8iVr_dQDpVzmQd2GvASReXJh9ATUlffI4npK1uJRL7c_yC5u1XzJ0zVpijlf8XhEFRCJe7bsYRr3V6LPaIuF6jNh62bX0MNnsQxVb4DfvKtNxB3MPcFlMrDH1YRdxw-GJuNFeQ6g0DjF1gf3LhNa0ig9MdrU"
-`
+```
